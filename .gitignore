@@ -1,7 +1,7 @@
 .gitignore
 data/
 test/
-ckpts/
+# ckpts/
 __pycache__/
 utils/__pycache__/
 dataset_test.py
