@@ -80,7 +80,7 @@ if __name__ == '__main__':
     parser.add_argument('--traj_len', type=int, default=8, help='length of trajectory to draw on video')
     args = parser.parse_args()
 
-    num_workers = args.batch_size if args.batch_size <= 16 else 16
+    num_workers = 0 # fixme: 不是0的话在 colab 上面会崩溃 # args.batch_size if args.batch_size <= 16 else 16
     video_name = args.video_file.split('/')[-1][:-4]
     out_csv_file = os.path.join(args.save_dir, f'{video_name}_ball.csv')
     out_video_file = os.path.join(args.save_dir, f'{video_name}.mp4')

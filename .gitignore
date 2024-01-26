@@ -1,5 +1,5 @@
 .gitignore
-data/
+# data/
 test/
 # ckpts/
 __pycache__/

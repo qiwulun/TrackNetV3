@@ -3,6 +3,13 @@
  每个分块（当然，最后一个不保证）大小都是50k，基本不可读。任何类型文件都可以用这种切割模式。 三、文件合并 不管用什么方式切割，合并方法不变。 
  
 `cd ckpts && cat partTrack* > TrackNet_best.pt`
+
+
+- 生成视频 `!cd TrackNetV3 && python predict.py --video_file test.mp4 --tracknet_file ckpts/TrackNet_best.pt --inpaintnet_file ckpts/InpaintNet_best.pt --save_dir prediction --output_video`
+- 不生成视频 `!cd TrackNetV3 && python predict.py --video_file test.mp4 --tracknet_file ckpts/TrackNet_best.pt --inpaintnet_file ckpts/InpaintNet_best.pt --save_dir prediction`
+
+- 修改 `prediction.py`: 1num_workers = 0 # fixme: 不是0的话在 colab 上面会崩溃 # args.batch_size if args.`
+
 # TrackNetV3
 We present TrackNetV3, a model composed of two core modules: trajectory prediction and rectification. The trajectory prediction module leverages an estimated background as auxiliary data to locate the shuttlecock in spite of the fluctuating visual interferences. This module also incorporates mixup data augmentation to formulate complex
 scenarios to strengthen the network’s robustness. Given that a shuttlecock can occasionally be obstructed, we create repair masks by analyzing the predicted trajectory, subsequently rectifying the path via inpainting.
